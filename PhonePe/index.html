@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phone Pe</title>
-    <link rel="stylesheet" href="/PhonePe/loader.css" />
-    <link rel="stylesheet" href="/PhonePe/checkloading.css" />
-    <link rel="stylesheet" href="/PhonePe/crossCheck.css" />
-    <link rel="stylesheet" href="/PhonePe/nav.css">
-    <link rel="stylesheet" href="/PhonePe/index.css">
+    <link rel="stylesheet" href="/loader.css" />
+    <link rel="stylesheet" href="/checkloading.css" />
+    <link rel="stylesheet" href="/crossCheck.css" />
+    <link rel="stylesheet" href="/nav.css">
+    <link rel="stylesheet" href="/index.css">
   </head>
 
 
@@ -113,6 +113,16 @@
   function payment() {
     // take input value
     let payAmount = parseInt(inputAmt.value);
+    
+
+     // Check if the input amount is empty
+  if (isNaN(payAmount) == true) {
+    alert("Please enter a valid amount before processing the payment.");
+    return; // Stop further execution if the amount is invalid
+  }
+
+  resetUI() // reset
+  
     loadingContainer.style.display = "block";
 
     let msg = document.createElement("h2");
@@ -122,6 +132,8 @@
     msg.style.textAlign = "center";
     msg.style.fontSize = "25px";
     screen.append(msg);
+
+   
 
     createPromise(payAmount)
       .then((paymentStatus) => {
@@ -135,7 +147,8 @@
         msg.style.textAlign = "center";
         msg.style.fontSize = "25px";
 
-        console.log(paymentStatus);
+        // console.log(paymentStatus);
+        
       })
       .catch((err) => {
         loadingContainer.style.display = "none";
@@ -148,25 +161,47 @@
         msg.style.marginTop = "45px";
         msg.style.textAlign = "center";
         msg.style.fontSize = "25px";
-        console.log(err);
+        // console.log(err);
+        
       });
   }
 
   function createPromise(amount) {
     let payPromise = new Promise((resolve, reject) => {
-      if (amount <= 600) {
+      if (amount <= 1000000000) {
         console.log(`Please Wait do not close the browser`);
         setTimeout(() => {
-          resolve(`Amount of Rs ${amount} is successfull`);
+          resolve(`Amount of Rs ${amount} transferred successfully. `);
         }, 2000);
       } else {
         console.log(`Please Wait do not close the browser`);
         setTimeout(() => {
-          reject(`Payment of Rs ${amount} failed`);
+          reject(`Payment of Rs ${amount} failed due to insufficient balance.`);
         }, 2000);
       }
     });
 
     return payPromise;
   }
+
+
+
+
+  // reset the payment method ui
+
+  function resetUI() {
+  // Clear the input field
+  inputAmt.value = "";
+
+  // Hide loading and check/cross containers
+  loadingContainer.style.display = "none";
+  checkLoading.style.display = "none";
+  crossLoading.style.display = "none";
+
+  // Remove any previous messages
+  let existingMsg = document.querySelector(".head");
+  if (existingMsg) {
+    existingMsg.remove();
+  }
+}
 </script>
