@@ -45,7 +45,7 @@
 
     <h1 style="text-align: center; font-size: 30px; color: rebeccapurple;">PhonePE Payment Screen</h1>
     <br>
-    <h3 style="text-align: center; font-size: 18px;">Scroll Down To Pay</h3>
+    <h3 style="text-align: center; font-size: 18px;">Account Balance is:- Rs 10,86,259.</h3>
     <!-- display to show the status   -->
     <div id="screen">
   
@@ -168,7 +168,7 @@
 
   function createPromise(amount) {
     let payPromise = new Promise((resolve, reject) => {
-      if (amount <= 1000000000) {
+      if (amount <= 1086259) {
         console.log(`Please Wait do not close the browser`);
         setTimeout(() => {
           resolve(`Amount of Rs ${amount} transferred successfully. `);
