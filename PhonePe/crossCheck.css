@@ -1,0 +1,116 @@
+
+.cross-container {
+    /* border: 2px solid orange; */
+    display: none;
+    position: relative;
+    width: 240px;
+    height: 240px;
+    /* margin-top: 15%; */
+    margin: auto;
+    margin-top: 10%;
+    margin-right: 28%;
+    
+}
+    
+    /* .cross-circle {
+      border: 5px solid blue;
+      border-radius: 50%;
+      border-top: 1px solid transparent;
+      width: 100%;
+      height: 100%;
+      animation: spin 1s linear infinite;
+    } */
+    
+    .cross-circle {
+        border: 5px solid red; /* Change 10px to your desired thickness */
+        border-radius: 50%;
+        border-top: 1px solid transparent;
+        width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+    }
+    .cross-check {
+      /* border: 2px solid red; */
+      display: block;
+      font-size: 85px;
+      position: absolute;
+      /* color : lightgreen; */
+      top: 13%;
+      left: 30%;
+      margin-top: 15%;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 0.1s forwards, drawCheck 0.8s ease-out 1.5s forwards;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(180deg); }
+      100% { transform: rotate(360deg); }
+    } 
+    
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    
+    @keyframes drawCheck {
+      100% {
+        transform: scale(1);
+        animation-iteration-count: 0; /* Stop the circle animation */
+      }
+    }
+
+
+
+    @media screen and (max-width: 990px) {
+      .cross-container {
+        /* border: 2px solid orange; */
+        width: 250px;
+        height: 250px;
+        margin: auto;  
+        margin-top: 5%;
+    }
+
+    .cross-check {
+      font-size: 90px;
+      top: 10%;
+      left: 30%;
+    }
+   
+    }
+    
+
+    @media screen and (max-width: 990px) {
+      .cross-container {
+        /* border: 2px solid orange; */
+        width: 210px;
+        height: 210px;
+        margin: auto;  
+        margin-top: 12%;
+    }
+
+    .cross-check {
+      font-size: 90px;
+      top: 8%;
+      left: 26%;
+    }
+   
+    }
+
+
+    @media screen and (max-width: 768px) {
+      .cross-container {
+        /* border: 2px solid orange; */
+        width: 210px;
+        height: 210px;
+        margin: auto;  
+        margin-top: 8%;
+    }
+
+    .cross-check {
+      font-size: 90px;
+      top: 8%;
+      left: 26%;
+    }
+   
+    }
